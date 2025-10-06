@@ -82,10 +82,7 @@ def convert_geojson_to_vgg_multitile(geojson_path, zoom, tile_size, class_proper
                                 "label": class_label
                             }
                         }
-                        if year:
-                            tile_name = f"{tx}_{ty}.jpg"
-                        else:
-                            tile_name = f"{tx}_{ty}.jpg"
+                        tile_name = f"{tx}_{ty}.png"
                             
                         if tile_name not in vgg_dict:
                             vgg_dict[tile_name] = {
@@ -101,12 +98,12 @@ def convert_geojson_to_vgg_multitile(geojson_path, zoom, tile_size, class_proper
 
 # Example usage
 if __name__ == "__main__":
-    geojson_path = "/home/adelb/Documents/Bpartners/Stanislas/big_VGGs/small_state_3857.geojson"
-    zoom = 25
-    tile_size = 256
-    class_property = "label"  # or "label"
+    geojson_path = "/home/adelb/Documents/Bpartners/Pleiades/Annotation_Bati-20251003T083650Z-1-001/Annotation_Bati/Pleiade_2014_cherbourg_bati.geojson"
+    zoom = 17
+    tile_size = 512
+    class_property = "Label_1"  # or "label"
 
     vgg_json = convert_geojson_to_vgg_multitile(geojson_path, zoom, tile_size, class_property)
 
-    with open(f"/home/adelb/Documents/Bpartners/Stanislas/big_VGGs/small_state.json", "w") as f:
+    with open(f"/home/adelb/Documents/Bpartners/Pleiades/dataset/bati_2022_cherbourg/pleiade_2014_cherbourg_bati.json", "w") as f:
         json.dump(vgg_json, f, indent=2)

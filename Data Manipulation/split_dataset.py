@@ -1,9 +1,9 @@
 from random import shuffle
 import shutil, os
 
-DATA_DIR= '/home/adelb/Documents/Bpartners/DATA/dataset_384'
-IMAGES_DIR= "/home/adelb/Documents/Bpartners/DATA/images_384"
-MASKS_DIR= "/home/adelb/Documents/Bpartners/DATA/masks_384"
+DATA_DIR= '/home/adelb/Documents/Bpartners/Pleiades/dataset/bati'
+IMAGES_DIR= "/home/adelb/Documents/Bpartners/Pleiades/dataset/bati_2014_cherbourg/images"
+MASKS_DIR= "/home/adelb/Documents/Bpartners/Pleiades/dataset/bati_2014_cherbourg/masks"
 
 # train: 80%, valid: 15%, test: 5%
 TRAIN_RATIO= 0.80
@@ -40,13 +40,13 @@ valid_images= list_images[split_index_1: split_index_2]
 test_images= list_images[split_index_2:]
 
 for fn in train_images:
-    shutil.copy(f"{MASKS_DIR}/{fn.replace('.jpg', '.png')}", f"{y_train_dir}/{fn.replace('.jpg', '.png')}")
-    shutil.copy(f"{IMAGES_DIR}/{fn.replace('.png', '.jpg')}", f"{x_train_dir}/{fn.replace('.png', '.jpg')}")
+    shutil.copy(f"{MASKS_DIR}/{fn}", f"{y_train_dir}/{fn}")
+    shutil.copy(f"{IMAGES_DIR}/{fn}", f"{x_train_dir}/{fn}")
 
 for fn in valid_images:
-    shutil.copy(f"{MASKS_DIR}/{fn.replace('.jpg', '.png')}", f"{y_valid_dir}/{fn.replace('.jpg', '.png')}")
-    shutil.copy(f"{IMAGES_DIR}/{fn.replace('.png', '.jpg')}", f"{x_valid_dir}/{fn.replace('.png', '.jpg')}")
+    shutil.copy(f"{MASKS_DIR}/{fn}", f"{y_valid_dir}/{fn}")
+    shutil.copy(f"{IMAGES_DIR}/{fn}", f"{x_valid_dir}/{fn}")
 
 for fn in test_images:
-    shutil.copy(f"{MASKS_DIR}/{fn.replace('.jpg', '.png')}", f"{y_test_dir}/{fn.replace('.jpg', '.png')}")
-    shutil.copy(f"{IMAGES_DIR}/{fn.replace('.png', '.jpg')}", f"{x_test_dir}/{fn.replace('.png', '.jpg')}")
+    shutil.copy(f"{MASKS_DIR}/{fn}", f"{y_test_dir}/{fn}")
+    shutil.copy(f"{IMAGES_DIR}/{fn}", f"{x_test_dir}/{fn}")
